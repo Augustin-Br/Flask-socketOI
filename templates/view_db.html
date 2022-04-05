@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>View Database</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <script>
+
+        var socket =io();
+
+    </script>
+
+  <p>{% for i in data %}
+        {{i.name}}
+
+    {% endfor %}
+    
+    </p>
+
+    <p id="yView"></p>
+
+
+    <script>
+        var mousemove_timeout = null;
+
+        var xMousePos = 0;
+        var yMousePos = 0;
+        document.onmousemove = function(e)
+        {
+            if(mousemove_timeout == null){
+
+            xMousePos = e.clientX + window.pageXOffset;
+            yMousePos = e.clientY + window.pageYOffset;
+
+            console.log(yMousePos)
+
+            socket.emit('yMousePos', data = yMousePos);
+
+            mousemove_timeout = window.setTimeout(mousemove_Timer, 150)
+
+            }
+        };
+
+        function mousemove_Timer(){
+            mousemove_timeout = null
+        }
+
+
+
+        socket.on('recuYMousePos', function(data) {
+            document.getElementById('yView').innerHTML = data.yMousePos
+
+        });
+        
+        
+    </script>
+</body>
+</html>
