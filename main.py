@@ -4,6 +4,11 @@ from flask_socketio import SocketIO
 from flask_session import Session
 from flask_sqlalchemy import SQLAlchemy
 
+from gameManagement import GameProcessus
+from fps_limiter import LimitFPS, FPSCounter
+
+
+
 __author__ = "Brian Perret"
 
 # Initialization and configuration of app
@@ -172,7 +177,7 @@ def yMousePos_recu(data):
 
 player1 = {'username' : '', 'score' : 0, 'cursorPos' : 0}
 player2 = {'username' : '', 'score' : 0, 'cursorPos' : 0}
-
+gameStatu = False
 @app.route('/pong')
 def pong():
 
@@ -180,23 +185,37 @@ def pong():
     """
     fonction playerInfo: permet de syncro les données entres le serveurs et les différents client
     """
+    
 
     def playerInfo():
+        global gameStatu
+
+        
         #on recup les infos des player du serveur
-        global player1
-        global player2
+        #global player1
+        #global player2
+        #global gameStatu
+
 
         socketio.emit('statuGame', {'player1Info': player1, "player2Info" : player2})
 
     
-    
+        if(player1['username'] != "" and player2['username'] != "" and gameStatu == False):
+            gameStatu = True
+            print("jeu tourné sur on")    
+
+            socketio.sleep(1)
+            game()
+ 
+        else:
+
+            print(player1['username'], player2['username'], gameStatu)
+            gameStatu = False
+            print("jeu tourné sur off")
     
     @socketio.on('connexion_serveur')
     def connexion_serveur():
         playerInfo()
-    
-
-    
     
     @socketio.on('readyPlayer1')
     def readyPlayer1():
@@ -208,6 +227,7 @@ def pong():
                 player1['username'] = session.get("username")
 
                 playerInfo()
+                
 
                 #socketio.emit('readyPlayer1Info', {'username': player1})
 
@@ -222,12 +242,31 @@ def pong():
 
                 playerInfo()
 
-    return render_template('pong_test.html')
 
+    def game():
+        #socketio.emit('statuGame', {'player1Info': player1, "player2Info" : player2})
 
-
+        #Game started
+        party = GameProcessus()
+        
+        fps_limiter = LimitFPS(fps=30)
+        fps_counter = FPSCounter()
         
 
+        print("SALUT !!!!")
+        print(gameStatu)
+        
+        while (gameStatu):
+            if fps_limiter():
+
+                ballPos = party.newBallPosition()
+
+                socketio.emit('gameInfo', {'ballPos' : ballPos})
+                socketio.sleep(0.01)
+
+                print("current fps: %s" % fps_counter())
+        
+    return render_template('pong_test.html')
 
 #socketio.emit('message_to_send', {"user" : "anonymous", 'msg' : data})
 

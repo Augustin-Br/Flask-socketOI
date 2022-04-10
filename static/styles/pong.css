@@ -3,3 +3,11 @@
     width: 500px;
     background-color: red;
 }
+
+#ball {
+    position:  absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: rgb(167, 0, 204);
+}
