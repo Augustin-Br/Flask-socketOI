@@ -200,7 +200,7 @@ def pong():
         socketio.emit('statuGame', {'player1Info': player1, "player2Info" : player2})
 
     
-        if(player1['username'] != "" and player2['username'] != "" and gameStatu == False):
+        if(player1['username'] != "" and player2['username'] != "" and gameStatu == False, gameStatu != True):
             gameStatu = True
             print("jeu tourné sur on")    
 
@@ -247,7 +247,7 @@ def pong():
         #socketio.emit('statuGame', {'player1Info': player1, "player2Info" : player2})
 
         #Game started
-        party = GameProcessus()
+        party = GameProcessus([500,500], 10)
         
         fps_limiter = LimitFPS(fps=30)
         fps_counter = FPSCounter()
