@@ -9,5 +9,5 @@ After :
 pip install -r "requirements.txt"
 python main.py
 
-Github : https://github.com/TheGostsniperfr/Flask_socketOI
+Github : https://github.com/Flask-socketOI/Flask-socketOI
 

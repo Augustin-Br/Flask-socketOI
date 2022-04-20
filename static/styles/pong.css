@@ -1,13 +1,51 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 .blackSquare{
     height: 500px;
     width: 500px;
     background-color: red;
 }
 
-#ball {
-    position:  absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+#area{
+    position: relative;
+    background-color: blue;
+    width: 500px;
+    height: 500px;
+
+}
+
+#ball  {
+    
+    position:absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
     background: rgb(167, 0, 204);
+    
+}
+
+#raquetteJ1{
+    
+    position:absolute;
+    /*
+    width: 10px;
+    height: 100px;
+    */
+    background:rgb(231, 231, 9);
+    
+}
+
+#raquetteJ2{
+    
+    position:absolute;
+    top: 0px;
+    /*
+    width: 10px;
+    height: 100px;
+    */
+    background:rgb(231, 9, 9);
+    
 }
