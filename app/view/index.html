@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Chat Room</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+
+        /*
+        socket.on('connect', function() {
+            socket.emit('test_message', data = 'salut');
+        });
+
+        socket.on('test_socket', function(msg) {
+            console.log('Hey ! : ', msg.number);
+        });
+        */
+        socket.on('message_to_send', function(data) {
+            console.log("message reçu", data.msg);
+
+            let mp_rendering = document.createElement("p");
+            mp_rendering.id = "";
+            mp_rendering.textContent =data.user + " : " +  data.msg;
+            document.getElementById("liste_mp").appendChild(mp_rendering);
+        });
+
+        
+        
+    </script>
+    <script>
+        //mini chat app
+
+        //voir si enlevé
+        var socket = io();
+
+        //recup var de l'input :
+        function getMessage(){
+
+            var message_recup = document.getElementById('myMessage').value;
+            console.log('message envoyé', message_recup);
+
+            socket.emit('message_send', data = message_recup);
+
+            document.getElementById('myMessage').value = ""
+        }
+    </script>
+    
+<div id="liste_mp">
+
+<ul id="messages"></ul>
+<input type="text" id="myMessage">
+<button id="sendbutton" onclick="getMessage();">Send</button>
+
+<INPUT TYPE="button" Value="Sign-in / Sign-out" onclick="window.location='/login';">
+</div>
+</body>
+</html>

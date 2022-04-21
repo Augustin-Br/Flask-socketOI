@@ -3,7 +3,6 @@
 # actu : test les colisions
 
 from math import *
-from pickle import PERSID
 from random import choice
 
 
