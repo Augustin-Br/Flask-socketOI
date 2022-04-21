@@ -6,6 +6,11 @@ from . import main
 
 @main.route('/')
 def index():
+    return home_page.index()
+
+# Scoreboard
+@main.route('/home')
+def home():
     return home_page.home()
 
 @main.route('/login',  methods=['GET', 'POST'])

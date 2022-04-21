@@ -38,3 +38,31 @@
   a:hover {
       background-color: #111;
   }
+
+
+.content{
+    position: relative;
+}
+
+.scoreboard{
+    position: relative;
+}
+
+/* Score board */
+
+
+table{
+    caption-side: top;
+    position: absolute;
+    top: 15px;
+    right: 2%;
+  }
+  th, td{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+  }
+  caption{
+    background-color: #0AD;
+    font-weight: bold;
+  }

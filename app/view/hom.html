@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
@@ -21,24 +22,46 @@
             </a>
         </ul>
     </div>
-    
-    
+
+
     <!-- Gif .-!-. Jouer -->
-    
+
     <div id="Gif-jouer">
         <img class="icon_site" src="img/yuuuuuu.gif" width="100%" height="60%" alt="">
     </div>
 
 
-    <!-- Scoreboard-->
-    
-    <div id="scoreboard">
 
-        
-        
+    <div class="content">
+        <div class="game"></div>
+        <div class="scoreboard">
+            <!-- Scoreboard-->
+            <table>
+                <caption>Score board</caption>
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Nombre de partie</th>
+                        <th>Score Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for i in data %}
+
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.nb_partie}}</td>
+                        <td>{{i.score_total}}</td>
+                    </tr>
+
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
-
-
 </body>
+
 </html>

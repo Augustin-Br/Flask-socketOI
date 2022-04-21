@@ -1,8 +1,10 @@
 from flask import session, render_template
 from flask_socketio import emit
 from ... import socketio
+from app.models.Users import users
+from ... import db
 
-def home():
+def index():
 
     @socketio.on('message_send')
     def message_recu(data):
@@ -25,8 +27,11 @@ def home():
             else:
                 socketio.emit('message_to_send', {
                             "user": session.get("username"), 'msg': data})
-
-
+                
 
 
     return render_template('index.html')
+
+def home():
+    info = users.query.all()
+    return render_template("hom.html", data=info)
