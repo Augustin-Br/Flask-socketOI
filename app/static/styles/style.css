@@ -3,23 +3,26 @@
     padding: 0%;
 }
 
+@font-face {
+    font-family: "Squid-Game";
+    src: url("https://discord.com/channels/@me/956243408123482172/966703199560024104") format("woff2");
+   }
+
 /** NAVIGATION BAR */
 
 #navbar {
     overflow: hidden;
     background-color: #333;
-    position: fixed;
     top: 0;
     width: 100%;
   }
-  
   
   ul {
       text-align: center;
       list-style-type: none;
       list-style-type: none;
       margin: 0;
-      padding: 15px;
+      padding: 20px;
   }
   
   li {
@@ -37,15 +40,28 @@
   
   a:hover {
       background-color: #111;
+      color: white;
   }
-
 
 .content{
     position: relative;
+    background-color: black;
 }
 
 .scoreboard{
-    position: relative;
+    margin-top: 70px;
+}
+
+#Gif-jouer{
+    top: 0;
+}
+#Gif-jouer:hover{
+    filter: blur(5px);
+}
+
+#Jouer{
+    position: absolute;
+    left: 200px;
 }
 
 /* Score board */
@@ -55,14 +71,86 @@ table{
     caption-side: top;
     position: absolute;
     top: 15px;
-    right: 2%;
-  }
-  th, td{
-    border: 1px solid black;
-    padding: 10px;
-    text-align: center;
+    top: 11%;
+    right: 8%;
   }
   caption{
-    background-color: #0AD;
+      text-align: center;
+  }
+  th, td{
+    border: 1px solid white;
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+  }
+  caption{
+    background-color: white;
     font-weight: bold;
   }
+
+
+/* footer */
+footer{
+    color: white;
+    text-align: center;
+    background-color: #111;
+}
+
+
+/* page sign-up */
+#container{
+    width:400px;
+    margin:0 auto;
+    margin-top:10%;
+}
+/* Bordered form */
+form {
+    width:100%;
+    padding: 30px;
+    border: 1px solid #f1f1f1;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 20px;
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    text-align: center;
+    font-family: Squid-Game, serif;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+/* Set a style for all buttons */
+input[type=submit] ,input[type=button]{
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}
+
+
+input[type=button]:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}

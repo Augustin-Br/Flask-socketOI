@@ -2,19 +2,27 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
     <title>sign-in</title>
 </head>
 <body>
-    <p>hello tu te trouves sur la page de connexion !! ;)</p>
+    <div id="container">
+        <!-- Zone de connexion -->
+        
+        <form action="" method="POST">
+            <h1>Connexion</h1>
+            
+            <label><b>Nom d'utilisateur</b></label>
+            <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>
 
-    <form action="" method="POST">
-        <input type="text" id="username" name="username" placeholder="Enter your username"> 
+            <label><b>Mot de passe</b></label>
+            <input type="password" placeholder="Entrer le mot de passe" name="password" required>
 
-        <input type="submit" value="Sign-up">
+            <input type="submit" id='submit' value='LOGIN'>
 
-    </form>
+            <input TYPE="button" Value="Créer un compte" onclick="window.location='/sign-up';">
+        </form>
+    </div>
 
-    <input TYPE="button" Value="Sign-up" onclick="window.location='/sign-up';">
-    
     </body>
 </html>
