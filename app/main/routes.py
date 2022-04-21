@@ -1,6 +1,6 @@
 from flask import session, redirect, url_for, render_template, request
 
-from app.controllers.pages import home_page, login_page, logout_page, pong_page, view_db_page, sign_up_page
+from app.controllers.pages import home_page, login_page, logout_page, pong_page, view_db_page, sign_up_page, test_page
 from . import main
 
 
@@ -39,5 +39,9 @@ def view_db():
 @main.route('/pong')
 def pong():
     return pong_page.pong()
+
+@main.route('/test')
+def test():
+    return test_page.test()
 
 

@@ -121,4 +121,4 @@ def pong():
                 socketio.emit('gameInfo',  data)
                 socketio.sleep(0.01)
                 
-    return render_template('pong_test.html')
+    return render_template('pages/pong_test.html')

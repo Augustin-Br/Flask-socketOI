@@ -28,7 +28,7 @@ def login(data):
 
         else:
             print("l'utilisateur veux se connecté")
-            return render_template('sign_in_page.html')
+            return render_template('pages/sign_in_page.html')
 
     else:
         # user have session

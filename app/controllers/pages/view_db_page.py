@@ -7,7 +7,7 @@ from ... import socketio
 def test():
     info = users.query.all()
     print("info :",info)
-    return render_template("view_db.html", data=info)
+    return render_template("pages/view_db.html", data=info)
 
 @socketio.on('yMousePos')
 def yMousePos_recu(data):

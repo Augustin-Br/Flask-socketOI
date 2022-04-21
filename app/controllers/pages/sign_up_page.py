@@ -33,4 +33,4 @@ def sign_up(data):
 
     else:
         # l'utilisateur veux accèdé a la page d'inscription
-        return render_template('sign_up_page.html')
+        return render_template('pages/sign_up_page.html')

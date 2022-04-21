@@ -1,0 +1,39 @@
+
+<div class="content">
+    <div class="game">
+        <div id="Gif-jouer">
+            <img class="icon_site" src="{{ url_for('static',filename='pictures/yuuuuuu.gif') }}" width="1200px" height="720px" alt="">
+        </div>
+        <!-- <div id="Jouer">
+            <button type="button" class="btn btn-outline-secondary btn-lg">Jouer</button>
+        </div> -->
+
+    </div>
+    <div class="scoreboard">
+        <!-- Scoreboard-->
+        <table>
+            <caption>Score board</caption>
+            <thead>
+                <tr>
+                    <th>Pseudo</th>
+                    <th>Nombre de partie</th>
+                    <th>Score Total</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for i in data %}
+
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.nb_partie}}</td>
+                    <td>{{i.score_total}}</td>
+                </tr>
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+

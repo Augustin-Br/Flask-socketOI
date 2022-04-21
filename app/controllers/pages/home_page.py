@@ -1,3 +1,4 @@
+from turtle import title
 from flask import session, render_template
 from flask_socketio import emit
 from ... import socketio
@@ -31,8 +32,18 @@ def index():
                 
 
 
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
 def home():
     info = users.query.all()
-    return render_template("home.html", data=info)
+
+    #navbar:
+    navbar = render_template("layout/navbar.html")
+
+
+    content = render_template("pages/home.html", data = info)
+
+
+
+
+    return render_template("template.html", title="Accueil", navbar = navbar, content = content)
