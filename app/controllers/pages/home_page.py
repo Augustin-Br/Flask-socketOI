@@ -13,7 +13,6 @@ def index():
 
 
     # send messages
-
     def message_to_send(data):
 
         # check empty message
@@ -27,6 +26,8 @@ def index():
             else:
                 socketio.emit('message_to_send', {
                             "user": session.get("username"), 'msg': data})
+
+            
                 
 
 
@@ -34,4 +35,4 @@ def index():
 
 def home():
     info = users.query.all()
-    return render_template("hom.html", data=info)
+    return render_template("home.html", data=info)

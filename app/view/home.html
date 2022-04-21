@@ -17,23 +17,27 @@
             <li><a class="etiquettes" href="">Accueil</a></li>
             <li><a class="etiquettes" href="">Règle</a></li>
             <li><a class="etiquettes" href="#">Autres</a></li>
-            <a href="sign_in_page.html">
+            <a href="/sign-up">
                 <button type="button" class="btn btn-outline-light">Connectez-vous</button>
             </a>
         </ul>
     </div>
 
 
-    <!-- Gif .-!-. Jouer -->
-
-    <div id="Gif-jouer">
-        <img class="icon_site" src="img/yuuuuuu.gif" width="100%" height="60%" alt="">
-    </div>
 
 
 
     <div class="content">
-        <div class="game"></div>
+        <div class="game">
+
+            <!-- Gif .-!-. Jouer -->
+
+            <div id="Gif-jouer">
+                <img class="icon_site" src="{{ url_for('static',filename='pictures/yuuuuuu.gif') }}" width="100%"
+                    height="60%" alt="">
+            </div>
+
+        </div>
         <div class="scoreboard">
             <!-- Scoreboard-->
             <table>
