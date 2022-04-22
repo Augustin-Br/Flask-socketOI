@@ -1,4 +1,3 @@
-from turtle import title
 from flask import session, render_template
 from flask_socketio import emit
 from ... import socketio
@@ -32,7 +31,7 @@ def index():
                 
 
 
-    return render_template('pages/index.html')
+    return render_template('pages/index_page.html')
 
 def home():
     info = users.query.all()
@@ -41,7 +40,7 @@ def home():
     navbar = render_template("layout/navbar.html")
 
 
-    content = render_template("pages/home.html", data = info)
+    content = render_template("pages/home_page.html", data = info)
 
 
 
