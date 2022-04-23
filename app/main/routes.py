@@ -30,9 +30,12 @@ def logout():
     return logout_controller.logout()
 
 
-@main.route('/sign-in')
+@main.route('/sign-in',  methods=['GET', 'POST'])
 def sign_in():
-    return sign_in_controller.sign_in()
+    data = None
+    if(request.method == 'POST'):
+        data = request.form
+    return sign_in_controller.sign_in(data)
 
 
 @main.route('/sign-up',  methods=['GET', 'POST'])

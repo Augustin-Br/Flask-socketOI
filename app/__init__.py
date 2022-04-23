@@ -9,7 +9,7 @@ socketio = SocketIO()
 db = SQLAlchemy()
 
 
-def create_app(debug=False):
+def create_app(debug=True):
     """Create an application."""
     app = Flask(__name__, template_folder='view')
     app.config.from_object('app.config')

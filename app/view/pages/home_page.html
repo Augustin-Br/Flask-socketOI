@@ -1,44 +1,211 @@
-
-
 <div class="home_container">
+
+    <script>
+        var socket = io();
+
+        socket.emit('connexion_serveur');
+    </script>
 
     <div class="tele_container">
 
         <div class="tele_display">
-            <img id="gif_home" src="{{ url_for('static',filename='pictures/yuuuuuu_2_2.gif') }}"  alt="">
 
-            <div class="play_button"></div>
+            <div id="tele_display_container">
+
+                <!-- Affichage du jeu ou gif-->
+                <img id="gif_home" src="/static/pictures/yuuuuuu_2_2.gif" alt="">
+
+
+
+                <div id="play_button_container">
+
+                    <button id="play_button" onclick="console.log('true'); socket.emit('readyPlayer'); ">
+                        <p id="play_button_text">Pret !</p>
+
+                        <p id="play_button_statu"> 0/2</p>
+
+ 
+
+                    </button>
+
+
+
+                </div>
+
+
+
+            </div>
+
+            <div id="area_container">
+
+                <div id="area_id">
+                    <!-- Gestion du jeu -->
+                    <div id="area">
+
+                        <script>
+                            //Gestion de la zone du jeu
+                            var area = document.getElementById('area');
+
+                            socket.on('gameInfo', function (gameData) {
+                                //console.log(gameData.gameArea);
+
+                                area.style.height = gameData.gameArea[2][1][1] + 'px';
+                                area.style.width = gameData.gameArea[0][0][1] + 'px';
+                            });
+                        </script>
+
+
+                        <div id="ball"></div>
+
+                        <script>
+                            //Gestion de la ball
+
+                            var ball = document.getElementById('ball');
+
+                            socket.on('gameInfo', function (data) {
+                                //console.log(data.ballPos[0], data.ballPos[0]);
+
+
+
+                                ball.style.left = data.ballPos[0] + 'px';
+                                ball.style.top = data.ballPos[1] + 'px';
+
+                            });
+                        </script>
+
+
+                        <div id="raquetteJ2">
+                            <script>
+                                //Gestion de la raquette du joueur 2 ( à gauche )
+                                var raquetteJ2 = document.getElementById('raquetteJ2')
+
+                                socket.on('gameInfo', function (gameData) {
+                                    //console.log(gameData.raquettes[1]);
+
+                                    //gestion de la taille
+                                    raquetteJ2.style.width = gameData.raquettes[0][0][1] - gameData.raquettes[0]
+                                        [0][
+                                            0
+                                        ] + 'px';
+                                    raquetteJ2.style.height = gameData.raquettes[0][1][1] - gameData.raquettes[
+                                            0][1]
+                                        [0] + 'px';
+
+                                    //gestion de la position
+                                    raquetteJ2.style.left = gameData.raquettes[0][0][1] + 'px';
+                                    raquetteJ2.style.top = gameData.raquettes[0][1][0] + 'px';
+
+
+
+                                });
+                            </script>
+                        </div>
+
+
+                        <div id="raquetteJ1">
+                            <script>
+                                //Gestion de la raquette du joueur 1 ( à droite )
+                                var raquetteJ1 = document.getElementById('raquetteJ1')
+
+                                socket.on('gameInfo', function (gameData) {
+                                    //console.log(gameData.raquettes[0]);
+
+                                    //gestion de la taille
+                                    raquetteJ1.style.width = gameData.raquettes[1][0][1] - gameData.raquettes[1]
+                                        [0][
+                                            0
+                                        ] + 'px';
+                                    raquetteJ1.style.height = gameData.raquettes[1][1][1] - gameData.raquettes[
+                                            1][1]
+                                        [0] + 'px';
+
+
+                                    //gestion de la position
+                                    raquetteJ1.style.left = gameData.raquettes[1][0][1] + 'px';
+                                    raquetteJ1.style.top = gameData.raquettes[1][1][0] + 'px';
+                                });
+                            </script>
+                        </div>
+
+                        <script>
+                            //Gestion de l'envoie de l'action ( <- ou -> ) pour déplacer la raquette
+
+                            document.addEventListener('keydown', raqettePosition);
+
+                            function raqettePosition(e) {
+
+                                console.log(e.code);
+
+                                if (e.code == "ArrowLeft") {
+                                    socket.emit('ArrowLeft');
+                                } else if (e.code == "ArrowRight") {
+                                    socket.emit('ArrowRight');
+                                }
+                            }
+                        </script>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
+        <div class="scoreboard">
+            <!-- Scoreboard -->
+            <table>
+                <caption>Score board</caption>
+                <thead>
+                    <tr>
+                        <th>Pseudo</th>
+                        <th>Nombre de partie</th>
+                        <th>Score Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for i in data %}
+
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>{{i.nb_partie}}</td>
+                        <td>{{i.score_total}}</td>
+                    </tr>
+
+
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <div class="scoreboard">
-        <!-- Scoreboard -->
-        <table>
-            <caption>Score board</caption>
-            <thead>
-                <tr>
-                    <th>Pseudo</th>
-                    <th>Nombre de partie</th>
-                    <th>Score Total</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                {% for i in data %}
-
-                <tr>
-                    <td>{{i.name}}</td>
-                    <td>{{i.nb_partie}}</td>
-                    <td>{{i.score_total}}</td>
-                </tr>
-
-
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-
-
 </div>
+
+<script>
+    socket.on('statuGame', function (data) {
+        console.log("message reçu", data);
+
+        if (data['player1'] != '' && data['player2'] != '') {
+            document.getElementById("play_button_statu").innerHTML = '2/2';
+        } else if (data['player1'] == '' && data['player2'] == '') {
+            document.getElementById("play_button_statu").innerHTML = '0/2';
+        } else {
+            document.getElementById("play_button_statu").innerHTML = '1/2';
+        }
+
+        document.getElementById('play_button_container').style.visibility = "visible";
+        document.getElementById('area_id').style.visibility = "collapse";
+
+    });
+</script>
+
+<script>
+    //document.getElementById('area').style.visibility = collapse;
+
+    //si le jeu se lance, le display change et charge le jeu
+    socket.on('display', function (data) {
+        console.log("message reçu", data);
+
+        if (data == true) {
+            document.getElementById('play_button_container').style.visibility = "collapse";
+            document.getElementById('area_id').style.visibility = "visible";
+        }
+    });
+</script>

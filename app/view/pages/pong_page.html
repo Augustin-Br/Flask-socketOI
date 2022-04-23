@@ -1,33 +1,4 @@
-<!-- Selection des joueurs -->
 
-
-<p id="player1">Player 1 : </p>
-<p id="score1">Score : </p>
-
-<input type="button" value="Ready Player 1" onclick="socket.emit('readyPlayer1');">
-
-<p id="player2">Player 2 : </p>
-<p id="score2">Score : </p>
-
-<input type="button" value="Ready Player 2" onclick="socket.emit('readyPlayer2');">
-
-<script>
-    var socket = io();
-
-    socket.emit('connexion_serveur');
-
-    socket.on('statuGame', function (data) {
-        console.log("message reçu", data.player1Info, data.player2Info);
-        document.getElementById('player1').innerHTML = "Player 1 : " + data.player1Info['username'];
-        document.getElementById('player2').innerHTML = "Player 2 : " + data.player2Info['username'];
-    });
-
-    socket.on('gameInfo', function (gameData) {
-        console.log(gameData.score);
-        document.getElementById('score1').innerHTML = "Score : " + gameData.score[0];
-        document.getElementById('score2').innerHTML = "Score : " + gameData.score[1];
-    });
-</script>
 
 <!-- Gestion du jeu -->
 <div id="area">
@@ -39,8 +10,8 @@
         socket.on('gameInfo', function (gameData) {
             //console.log(gameData.gameArea);
 
-            area.style.width = gameData.gameArea[2][1][1] + 'px';
-            area.style.height = gameData.gameArea[0][0][1] + 'px';
+            area.style.height = gameData.gameArea[2][1][1] + 'px';
+            area.style.width = gameData.gameArea[0][0][1] + 'px';
         });
     </script>
 
@@ -73,8 +44,11 @@
                 //console.log(gameData.raquettes[1]);
 
                 //gestion de la taille
-                raquetteJ2.style.width = gameData.raquettes[0][0][1] - gameData.raquettes[0][0][0] + 'px';
-                raquetteJ2.style.height = gameData.raquettes[0][1][1] - gameData.raquettes[0][1][0] + 'px';
+                raquetteJ2.style.width = gameData.raquettes[0][0][1] - gameData.raquettes[0][0][
+                    0
+                ] + 'px';
+                raquetteJ2.style.height = gameData.raquettes[0][1][1] - gameData.raquettes[0][1]
+                    [0] + 'px';
 
                 //gestion de la position
                 raquetteJ2.style.left = gameData.raquettes[0][0][1] + 'px';
@@ -96,8 +70,11 @@
                 //console.log(gameData.raquettes[0]);
 
                 //gestion de la taille
-                raquetteJ1.style.width = gameData.raquettes[1][0][1] - gameData.raquettes[1][0][0] + 'px';
-                raquetteJ1.style.height = gameData.raquettes[1][1][1] - gameData.raquettes[1][1][0] + 'px';
+                raquetteJ1.style.width = gameData.raquettes[1][0][1] - gameData.raquettes[1][0][
+                    0
+                ] + 'px';
+                raquetteJ1.style.height = gameData.raquettes[1][1][1] - gameData.raquettes[1][1]
+                    [0] + 'px';
 
 
                 //gestion de la position
@@ -125,3 +102,5 @@
         }
     </script>
 </div>
+
+

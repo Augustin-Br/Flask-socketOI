@@ -12,9 +12,17 @@
 #area{
     position: relative;
     background-color: blue;
-    width: 500px;
-    height: 500px;
+    width: 680px;
+    height: 540px;
+    border: 1rem solid;
+    
+}
 
+
+#area_id{
+    position: absolute;
+    visibility: collapse;
+    z-index: -1;
 }
 
 #ball  {
@@ -23,7 +31,7 @@
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background: rgb(167, 0, 204);
+    background: rgb(139, 9, 117);
     
 }
 

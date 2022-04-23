@@ -4,6 +4,7 @@ from ... import socketio
 from app.models.Users import users
 from ... import db
 from app.controllers.auth import auth_controller
+from app.controllers.pages import pong_controller
 
 
 def index():
@@ -41,9 +42,9 @@ def home():
     #navbar:
     navbar = auth_controller.auth()
 
+    pong_controller.pong()
 
     content = render_template("pages/home_page.html", data = info)
-
 
 
 

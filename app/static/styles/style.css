@@ -1,61 +1,62 @@
-*{
+* {
     margin: 0%;
-    padding: 0%;   
+    padding: 0%;
 }
 
 @font-face {
     font-family: "Squid-Game";
     src: url("https://discord.com/channels/@me/956243408123482172/966703199560024104") format("woff2");
-   }
+}
 
 /** NAVIGATION BAR */
 
 #navbar {
     background-color: #333;
     width: 100%;
-  }
-  
-  ul {
-      text-align: center;
-      list-style-type: none;
-      list-style-type: none;
-      padding: 20px;
 
-      /* bootstrap de m*rde */
-      margin-bottom: 0px !important;
-  }
-  
-  li {
-      display: inline;
-      font-family: "Fira Sans", sans-serif;
-      font-size: 17px;    
-      padding: 50px;
+}
 
-  }
-  
-  .etiquettes{
-      color: #f2f2f2;
-      text-decoration: none;
-      padding: 14px;
-  }
-  
-  a:hover {
-      background-color: #111;
-      color: white;
-  }
+ul {
+    text-align: center;
+    list-style-type: none;
+    list-style-type: none;
+    padding: 20px;
 
-.home_container{
+    /* bootstrap de m*rde */
+    margin-bottom: 0px !important;
+}
+
+li {
+    display: inline;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 17px;
+    padding: 50px;
+
+}
+
+.etiquettes {
+    color: #f2f2f2;
+    text-decoration: none;
+    padding: 14px;
+}
+
+a:hover {
+    background-color: #111;
+    color: white;
+}
+
+/* Tv container*/
+
+.home_container {
     z-index: 1;
     padding: 3%;
     position: relative;
     background-image: url('../pictures/backgr.png');
     background-repeat: repeat;
-
-
 }
 
 
-.tele_container{
+.tele_container {
     z-index: 2;
     left: 3%;
 
@@ -63,56 +64,114 @@
     background-repeat: no-repeat;
     width: 1220px;
     height: 764px;
+    
 }
 
-.tele_display{
+.tele_display {
+    position: relative;
     padding-top: 105px;
     padding-left: 152px;
+
 }
 
-
-
-#gif_home{
+#play_button_container{
     position: absolute;
-    z-index: -1;
-    width : 680px;
-    height: 540px;
+    visibility: visible;
 }
 
-#gif_home:hover{
+
+
+
+#gif_home {
+    position: absolute;
+    display: block;
+    width: 680px;
+    height: 540px;
+    z-index: -1;
+
+}
+
+#gif_home:hover {
     filter: blur(5px);
 
 }
 
+/* play button */ 
 
+#play_button_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 680px;
+    height: 540px;
+    text-align: center;
 
+}
 
+#play_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 75px;
+    background-color: #53af57;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#play_button:hover {
+    background-color: white;
+    color: #53af57;
+    border: 1px solid #53af57;
+}
+
+#play_button_text{
+    position: absolute;
+
+    margin: auto;
+
+}
+
+#play_button_statu{
+    position: absolute;
+    padding-top: 60px;
+    padding-left: 100px;
+
+}
 
 /* Score board */
-table{
+table {
     position: absolute;
     caption-side: top;
     top: 15px;
     top: 11%;
     right: 8%;
-  }
-  caption{
-      text-align: center;
-  }
-  th, td{
+}
+
+caption {
+    text-align: center;
+}
+
+th,
+td {
     border: 1px solid rgb(255, 255, 255);
     padding: 20px;
     text-align: center;
     color: rgb(255, 255, 255);
-  }
-  caption{
+}
+
+caption {
     background-color: rgb(255, 255, 255);
     font-weight: bold;
-  }
+}
 
 
 /* footer */
-footer{
+footer {
     color: white;
     text-align: center;
     background-color: #111;
@@ -120,21 +179,23 @@ footer{
 
 
 /* page sign-up */
-#container{
-    width:400px;
-    margin:0 auto;
-    margin-top:10%;
+#container {
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10%;
 }
+
 /* Bordered form */
 form {
-    width:100%;
+    width: 100%;
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
     border-radius: 20px;
 }
-#container h1{
+
+#container h1 {
     width: 38%;
     margin: 0 auto;
     padding-bottom: 10px;
@@ -143,7 +204,8 @@ form {
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -154,7 +216,8 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-input[type=submit] ,input[type=button]{
+input[type=submit],
+input[type=button] {
     background-color: #53af57;
     color: white;
     padding: 14px 20px;
@@ -164,6 +227,7 @@ input[type=submit] ,input[type=button]{
     width: 100%;
     border-radius: 5px;
 }
+
 input[type=submit]:hover {
     background-color: white;
     color: #53af57;
