@@ -2,6 +2,8 @@ from flask import session, render_template, request, redirect
 from app.models.Users import users
 from ... import socketio
 from ... import db
+from app.controllers.auth import auth_controller
+
 
 
 
@@ -33,4 +35,6 @@ def sign_up(data):
 
     else:
         # l'utilisateur veux accèdé a la page d'inscription
-        return render_template('pages/sign_up_page.html')
+        navbar = auth_controller.auth()
+        content = render_template('pages/sign_up_page.html')
+        return render_template("template.html", title="Inscription", navbar = navbar, content = content)

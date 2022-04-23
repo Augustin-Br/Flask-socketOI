@@ -3,6 +3,8 @@ from flask_socketio import emit
 from ... import socketio
 from app.models.Users import users
 from ... import db
+from app.controllers.auth import auth_controller
+
 
 def index():
 
@@ -37,7 +39,7 @@ def home():
     info = users.query.all()
 
     #navbar:
-    navbar = render_template("layout/navbar.html")
+    navbar = auth_controller.auth()
 
 
     content = render_template("pages/home_page.html", data = info)
