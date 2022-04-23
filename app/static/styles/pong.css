@@ -3,6 +3,12 @@
     padding: 0px;
 }
 
+@font-face {
+    font-family: "Squid-Game";
+    src: url("../fonts/GameOfSquids.ttf") format("woff2");
+}
+
+
 .blackSquare{
     height: 500px;
     width: 500px;
@@ -11,10 +17,12 @@
 
 #area{
     position: relative;
-    background-color: blue;
+    background-color: rgb(255, 255, 255);
     width: 680px;
     height: 540px;
-    border: 1rem solid;
+    border: 1rem;
+    z-index: -1;
+
     
 }
 
@@ -22,7 +30,6 @@
 #area_id{
     position: absolute;
     visibility: collapse;
-    z-index: -1;
 }
 
 #ball  {
@@ -31,7 +38,21 @@
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background: rgb(139, 9, 117);
+    background: rgb(0, 0, 0);
+
+    
+}
+
+
+/* score display */
+
+#score_container{
+    position: relative;
+    font-size: 800%;
+    font-weight: bold;
+    text-align: center;
+    font-family:"Squid-Game";
+    color: rgb(173, 173, 173);
     
 }
 
@@ -42,7 +63,7 @@
     width: 10px;
     height: 100px;
     */
-    background:rgb(231, 231, 9);
+    background:rgb(0, 0, 0);
     
 }
 
@@ -54,6 +75,6 @@
     width: 10px;
     height: 100px;
     */
-    background:rgb(231, 9, 9);
+    background:rgb(0, 0, 0);
     
 }

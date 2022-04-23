@@ -13,7 +13,7 @@ gameStatu = False
 
 
 def pong():
-    
+
     def playerInfo():
         """
         fonction qui permet de renseigner le nombre et nom des joueurs pret a joué
@@ -24,7 +24,7 @@ def pong():
         les joueurs qui ne clique pas sur 'pret' son spectateur
 
         """
-        
+
         global gameStatu
 
         # on recup les infos des player du serveur
@@ -34,20 +34,20 @@ def pong():
 
         # envoie l'état du nombre de pret
 
-
         socketio.emit(
             'statuGame', {'player1': player1['username'], "player2": player2['username']})
+
+        if(gameStatu == True):
+            socketio.emit('display', data=True)
 
         # cas de deux joueurs qui sont prets -> lancement du jeu
         if(player1['username'] != "" and player2['username'] != "" and gameStatu == False):
             gameStatu = True
             print("jeu tourné sur on")
-            
 
+            # change display ( gif pong -> real pong)
 
-            #change display ( gif pong -> real pong)
-
-            socketio.emit('display', data = True)
+            socketio.emit('display', data=True)
 
             socketio.sleep(0.5)
             game()
@@ -56,10 +56,9 @@ def pong():
     @socketio.on('connexion_serveur')
     def connexion_serveur():
         playerInfo()
-    
-    
 
     # gestion du joueur 1 isReady
+
     @socketio.on('readyPlayer')
     def isReadyPlayer1():
         global player1
@@ -67,21 +66,16 @@ def pong():
 
         # check si utulisateur connecté
         if session.get("username"):
-            print('1')
             # check si place libre
             if(player1['username'] == '' or player2['username'] == ''):
-                print('2')
                 # check si place vide et check doublon
-                if(player1['username'] != session.get("username") or player2['username'] != session.get("username")):
-                    print('3')
+                if(player1['username'] != session.get("username") and player2['username'] != session.get("username")):
 
                     # attribu une place au joueur
                     if(player1['username'] == ''):
                         player1['username'] = session.get("username")
-                        print('4')
                     else:
                         player2['username'] = session.get("username")
-                        print('5')
 
                     # on actualise les données de statu
                     playerInfo()
@@ -128,4 +122,3 @@ def pong():
                 print(data)
 
                 socketio.sleep(0.01)
-

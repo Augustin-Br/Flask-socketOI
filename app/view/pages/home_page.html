@@ -23,17 +23,8 @@
                         <p id="play_button_text">Pret !</p>
 
                         <p id="play_button_statu"> 0/2</p>
-
- 
-
                     </button>
-
-
-
                 </div>
-
-
-
             </div>
 
             <div id="area_container">
@@ -51,6 +42,18 @@
 
                                 area.style.height = gameData.gameArea[2][1][1] + 'px';
                                 area.style.width = gameData.gameArea[0][0][1] + 'px';
+                            });
+                        </script>
+
+                        <!-- score -->
+
+                        <div id="score_container"> 0-0</div>
+
+                        <script>
+                            //gestion du score
+                            socket.on('gameInfo', function (data) {
+                                document.getElementById('score_container').innerHTML = data["score"][0] + '-' + data["score"][1];
+
                             });
                         </script>
 
@@ -143,6 +146,7 @@
                                 }
                             }
                         </script>
+
                     </div>
 
                 </div>
@@ -189,10 +193,8 @@
         } else {
             document.getElementById("play_button_statu").innerHTML = '1/2';
         }
-
         document.getElementById('play_button_container').style.visibility = "visible";
         document.getElementById('area_id').style.visibility = "collapse";
-
     });
 </script>
 
