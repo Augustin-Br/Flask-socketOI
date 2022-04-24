@@ -58,6 +58,16 @@
                         </script>
 
 
+                        <!-- Winner -->
+
+                        <script>
+                            socket.on('PlayerWin', function (data) {
+                                console.log("Winner : ", data)
+                                window.alert(data['winner'] + " a gagné " + data['score'][1] + "-" +data['score'][0] + " contre " + data['loosing'] + " !")
+                            });
+                        </script>
+
+
                         <div id="ball"></div>
 
                         <script>
@@ -193,8 +203,7 @@
         } else {
             document.getElementById("play_button_statu").innerHTML = '1/2';
         }
-        document.getElementById('play_button_container').style.visibility = "visible";
-        document.getElementById('area_id').style.visibility = "collapse";
+
     });
 </script>
 
@@ -206,8 +215,12 @@
         console.log("message reçu", data);
 
         if (data == true) {
-            document.getElementById('play_button_container').style.visibility = "collapse";
+            document.getElementById('play_button_container').style.visibility = "hidden";
             document.getElementById('area_id').style.visibility = "visible";
+        }
+        else{
+            document.getElementById('play_button_container').style.visibility = "visible";
+            document.getElementById('area_id').style.visibility = "hidden";
         }
     });
 </script>

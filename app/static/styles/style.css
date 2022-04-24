@@ -1,6 +1,7 @@
 * {
     margin: 0%;
     padding: 0%;
+
 }
 
 @font-face {
@@ -48,6 +49,8 @@ a:hover {
 /* Tv container*/
 
 .home_container {
+    background-size:cover;
+    height: 100vh;
     z-index: 1;
     padding: 3%;
     position: relative;
@@ -176,6 +179,26 @@ footer {
     text-align: center;
     background-color: #111;
 }
+
+
+/* page rule*/ 
+
+.rule_container{
+    background-size:cover;
+    height: 100vh;
+    text-align: center;
+    font-size: 2em;
+    background-image: url('../pictures/backgr.png');
+    background-repeat: repeat;
+    color: white;
+}
+
+#rule_title{
+    font-weight: bold;
+    font-size: 3em;
+}
+
+
 
 
 /* page sign-up */

@@ -28,9 +28,6 @@ def pong():
         global gameStatu
 
         # on recup les infos des player du serveur
-        # global player1
-        # global player2
-        # global gameStatu
 
         # envoie l'état du nombre de pret
 
@@ -82,13 +79,16 @@ def pong():
 
     def game():
 
-        # socketio.emit('statuGame', {'player1Info': player1, "player2Info" : player2})
 
         # Game started
         party = GameProcessus([680, 540])
 
         fps_limiter = LimitFPS(fps=30)
         fps_counter = FPSCounter()
+
+        global gameStatu
+        global player1
+        global player2
 
         print('gameStatu : ', gameStatu)
 
@@ -122,3 +122,34 @@ def pong():
                 print(data)
 
                 socketio.sleep(0.01)
+
+                # check win
+                if(data['score'][0] == 8 or data['score'][1] == 8):
+
+                    if(data['score'][0] == 8):
+                        winner = player1['username']
+                        loosing = player2['username']
+ 
+
+                    else:
+                        winner = player2['username']
+                        loosing = player1['username']
+
+                    
+                    # envoie du message aux joueurs et spectateur
+                    socketio.emit('PlayerWin', {'winner': winner, "loosing": loosing, 'score': data['score']})
+                    socketio.emit('display', data=False)
+                    socketio.sleep(0.01)
+
+                    # reset du jeu
+                    gameStatu=False
+                    player1['username'] = ''
+                    player2['username'] = ''
+                    playerInfo()
+
+
+
+                
+
+
+

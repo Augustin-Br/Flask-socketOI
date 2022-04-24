@@ -133,6 +133,8 @@ class GameProcessus:
                 print("percentage : ", percentage)
                 print(newBallPosition[1], self.raquettePos[player][1][0], self.raquettePos[player][1][1], self.raquettePos[player][1][0])
 
+
+
                 if(percentage == 1):
                     self.ballVector[0] = 0
                     self.ballVector[1] *= -1
@@ -154,6 +156,10 @@ class GameProcessus:
 
                     self.ballVector[0] *= -1
                     self.ballVector[1] = percentage * (-10)
+                    
+
+                #ajoiut de la vitesse
+                self.ballVector[2] += 5
 
                 return True
 
