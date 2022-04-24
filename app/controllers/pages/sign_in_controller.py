@@ -1,5 +1,10 @@
 from flask import render_template, session, redirect
+from flask_socketio import SocketIO, emit
 from app.controllers.auth import auth_controller
+from app.models.Users import users
+from ... import socketio
+from ... import db
+import bcrypt
 
 
 def sign_in(data):
@@ -16,16 +21,40 @@ def sign_in(data):
             print("l'utilisateur envoie les données d'authentification")
 
             username = data['username']
+            password = data['password']
+            
 
             # stock data into user's session
 
             session['username'] = username
+            session['password'] = password
 
-            print("user name : ", session.get("username"))
+            print("username : ", session.get("username"))
+            print("password : ", session.get("password"))
 
-            # redirection user to home page
+            #verify session
+            
+            exists = db.session.query(users._id).filter_by(name=session['username']).scalar() is not None
+            if exists == True:
+                print('l\'utilisateur existe')
+                
+                verif_pass = db.session.query(users._id).filter_by(name=session['username']) and (db.session.query(users._id).filter_by(password=session['password'])).scalar() is not None
+                if verif_pass == True:
+                    print('accès autorisé')
+                    
+                else:
+                    return redirect('/sign-up')
+                
+                
+                # redirection user to home page
+                return redirect("/home")
+                
+            else:
+                print('l\'utilisateur n\'existe pas')
+                return redirect("/sign-up")
+            
 
-            return redirect("/home")
+            
 
         else:
             print("l'utilisateur veux se connecté")

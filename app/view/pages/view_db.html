@@ -17,7 +17,10 @@
     </script>
 
     <p>{% for i in data %}
-        {{i.name}}
+        <p>username : {{i.name}}</p>
+        <p>password : {{i.password}}</p>
+        <p>nb_partie : {{i.nb_partie}}</p>
+        <p>score : {{i.score}}</p>
 
         {% endfor %}
 

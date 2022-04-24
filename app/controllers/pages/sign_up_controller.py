@@ -17,6 +17,9 @@ def sign_up(data):
 
         # recup les données recus
         username = data['username']
+        password = data['password']
+        nb_partie = 0
+        score = 0
 
         # check username already existe:pyt
         user_found = users.query.filter_by(name=username).first()
@@ -27,11 +30,11 @@ def sign_up(data):
             return
 
         else:
-            data = users(username)
+            data = users(username, password, nb_partie, score)
             db.session.add(data)
             db.session.commit()
             print("ok nom")
-            return redirect('/')
+            return redirect('/home')
 
     else:
         # l'utilisateur veux accèdé a la page d'inscription
