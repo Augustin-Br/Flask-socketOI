@@ -43,6 +43,7 @@ def sign_in(data):
                 
                 if password == name_id.password:
                     print('accès autorisé')
+                    return redirect('/home')
                     
                 else:
                     return redirect('/sign-up')
