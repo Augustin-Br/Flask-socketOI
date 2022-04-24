@@ -45,7 +45,8 @@ def sign_in(data):
                     # print('accès autorisé')
                     # return redirect('/home')
                 
-                verify_password = password_verif(data[password], name_id.password)
+                verify_password = password_verif(session.get("password"), name_id.password)
+                print(verify_password)
                 
                 if verify_password == 'True':
                     print('accès autorisé')
