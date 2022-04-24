@@ -1,12 +1,9 @@
 from flask import session, render_template, request, redirect
-from app.models.Users import users
+from app.models.Users import users, encrypt_password
 from ... import socketio
 from ... import db
 from app.controllers.auth import auth_controller
-
-
-
-
+ 
 
 def sign_up(data):
 
@@ -17,7 +14,7 @@ def sign_up(data):
 
         # recup les données recus
         username = data['username']
-        password = data['password']
+        password = encrypt_password(data['password'])
         nb_partie = 0
         score = 0
 

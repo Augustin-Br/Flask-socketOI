@@ -1,7 +1,8 @@
 from flask import session, redirect, url_for, render_template, request
-
+from werkzeug.security import generate_password_hash, check_password_hash
 from app.controllers.pages import home_controller, logout_controller, sign_up_controller, sign_in_controller, view_db_controller, rule_controller
 from . import main
+
 
 @main.route('/home')
 def home():

@@ -1,8 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
+
+
 
 class users(db.Model):
     __tablename__ = 'users'
@@ -18,5 +20,19 @@ class users(db.Model):
         self.password = password
         self.nb_partie = nb_partie
         self.score = score
-        
+
+def encrypt_password(password):
+    
+    return generate_password_hash(password)
+
+
+def password_verif(password, db_password):  
+    
+    hashed_value = generate_password_hash(password)
+    
+    stored_password = db_password
+    
+    result = check_password_hash(stored_password, password)
+    
+    return str(result)
    

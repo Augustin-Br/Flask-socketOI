@@ -1,7 +1,7 @@
 from flask import render_template, session, redirect
 from flask_socketio import SocketIO, emit
 from app.controllers.auth import auth_controller
-from app.models.Users import users
+from app.models.Users import users, password_verif, encrypt_password
 from ... import socketio
 from ... import db
 import bcrypt
@@ -41,7 +41,13 @@ def sign_in(data):
                 name_id = users.query.filter_by(name=session['username']).first()
                 print(name_id.password)
                 
-                if password == name_id.password:
+                # if password == name_id.password:
+                    # print('accès autorisé')
+                    # return redirect('/home')
+                
+                verify_password = password_verif(data[password], name_id.password)
+                
+                if verify_password == 'True':
                     print('accès autorisé')
                     return redirect('/home')
                     
