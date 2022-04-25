@@ -52,7 +52,7 @@
                         <script>
                             //gestion du score
                             socket.on('gameInfo', function (data) {
-                                document.getElementById('score_container').innerHTML = data["score"][0] + '-' + data["score"][1];
+                                document.getElementById('score_container').innerHTML = data["score"][1] + '-' + data["score"][0];
 
                             });
                         </script>
@@ -63,7 +63,7 @@
                         <script>
                             socket.on('PlayerWin', function (data) {
                                 console.log("Winner : ", data)
-                                window.alert(data['winner'] + " a gagné " + data['score'][1] + "-" +data['score'][0] + " contre " + data['loosing'] + " !")
+                                window.alert(data['winner'] + " a gagné " + data['score'][0] + "-" +data['score'][1] + " contre " + data['loosing'] + " !")
                             });
                         </script>
 

@@ -79,7 +79,6 @@ def pong():
 
     def game():
 
-
         # Game started
         party = GameProcessus([680, 540])
 
@@ -127,17 +126,21 @@ def pong():
                 if(data['score'][0] == 8 or data['score'][1] == 8):
 
                     if(data['score'][0] == 8):
-                        winner = player1['username']
-                        loosing = player2['username']
+
+                        winner = player2['username']
+                        loosing = player1['username']
+                        score = [data['score'][0], data['score'][1]]
  
 
                     else:
-                        winner = player2['username']
-                        loosing = player1['username']
+                        winner = player1['username']
+                        loosing = player2['username']
+                        score = [data['score'][1], data['score'][0]]
+
 
                     
                     # envoie du message aux joueurs et spectateur
-                    socketio.emit('PlayerWin', {'winner': winner, "loosing": loosing, 'score': data['score']})
+                    socketio.emit('PlayerWin', {'winner': winner, "loosing": loosing, 'score': score})
                     socketio.emit('display', data=False)
                     socketio.sleep(0.01)
 

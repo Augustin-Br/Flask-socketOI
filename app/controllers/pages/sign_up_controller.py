@@ -31,7 +31,7 @@ def sign_up(data):
             db.session.add(data)
             db.session.commit()
             print("ok nom")
-            return redirect('/home')
+            return redirect('/')
 
     else:
         # l'utilisateur veux accèdé a la page d'inscription

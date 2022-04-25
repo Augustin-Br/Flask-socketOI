@@ -43,14 +43,14 @@ def sign_in(data):
                 
                 # if password == name_id.password:
                     # print('accès autorisé')
-                    # return redirect('/home')
+                    # return redirect('/')
                 
                 verify_password = password_verif(session.get("password"), name_id.password)
                 print(verify_password)
                 
                 if verify_password == 'True':
                     print('accès autorisé')
-                    return redirect('/home')
+                    return redirect('/')
                     
                 else:
                     return redirect('/sign-up')

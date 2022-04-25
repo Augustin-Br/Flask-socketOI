@@ -135,27 +135,27 @@ class GameProcessus:
 
 
 
-                if(percentage == 1):
-                    self.ballVector[0] = 0
-                    self.ballVector[1] *= -1
+                if(percentage >= 0.8 and percentage <= 1.2):
+                    self.ballVector[0] *= -1
+                    self.ballVector[1] = 0
 
-                elif(percentage > 1):
+                elif(percentage > 1.2):
                     #limit of the ball angle
                     if(percentage > 1.6):
                         percentage = 1.6
 
                     
                     self.ballVector[0] *= -1
-                    self.ballVector[1] = percentage * (10)
+                    self.ballVector[1] = percentage 
 
 
-                elif(percentage < 1):
+                elif(percentage < 0.8):
                     #limit of the ball angle
                     if(percentage < 0.4):
                         percentage = 0.4
 
                     self.ballVector[0] *= -1
-                    self.ballVector[1] = percentage * (-10)
+                    self.ballVector[1] = percentage 
                     
 
                 #ajoiut de la vitesse
