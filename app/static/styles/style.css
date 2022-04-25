@@ -282,6 +282,7 @@ input[type=button]:hover {
 #body{
     background-size:cover;
     height: 100vh;
+    padding-top: 1%;
     background-image: url('../pictures/backgr.png');
     background-repeat: repeat;
 }

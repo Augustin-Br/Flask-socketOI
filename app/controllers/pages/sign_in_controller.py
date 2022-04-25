@@ -4,7 +4,6 @@ from app.controllers.auth import auth_controller
 from app.models.Users import users, password_verif, encrypt_password
 from ... import socketio
 from ... import db
-import bcrypt
 
 
 def sign_in(data):
