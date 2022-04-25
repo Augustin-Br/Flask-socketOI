@@ -118,7 +118,6 @@ def pong():
                 data = party.gameInfo()
 
                 socketio.emit('gameInfo',  data)
-                print(data)
 
                 socketio.sleep(0.01)
 
