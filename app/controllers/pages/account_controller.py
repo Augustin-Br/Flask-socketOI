@@ -11,8 +11,16 @@ def account():
     # navbar:
     navbar = auth_controller.auth()
 
-    content = render_template("pages/myaccount_page.html")
+    data = users.query.filter_by(name = session['username']).first()
+
+
+
+    content = render_template("pages/myaccount_page.html", data=data)
     
     foother = render_template("layout/foother.html")
+
+
+
+
 
     return render_template("template.html", title="Account", navbar=navbar, content=content, foother = foother)

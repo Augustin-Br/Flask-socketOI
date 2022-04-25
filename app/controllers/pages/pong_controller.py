@@ -122,7 +122,19 @@ def pong():
                 socketio.sleep(0.01)
 
                 # check win
-                if(data['score'][0] == 1 or data['score'][1] == 1):
+                if(data['score'][0] == 8 or data['score'][1] == 8):
+
+                    updateJ1 = db.session.query(users).filter_by(name=player1['username']).first()
+                    updateJ1.score += data['score'][1]
+                    updateJ1.nb_partie += 1
+                    db.session.add(updateJ1)
+                    db.session.commit()
+
+                    updateJ2 = db.session.query(users).filter_by(name=player2['username']).first()
+                    updateJ2.score += data['score'][0]
+                    updateJ2.nb_partie += 1
+                    db.session.add(updateJ2)
+                    db.session.commit()
 
                     if(data['score'][0] == 8):
 
