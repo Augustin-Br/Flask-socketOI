@@ -122,7 +122,7 @@ def pong():
                 socketio.sleep(0.01)
 
                 # check win
-                if(data['score'][0] == 8 or data['score'][1] == 8):
+                if(data['score'][0] == 1 or data['score'][1] == 1):
 
                     if(data['score'][0] == 8):
 

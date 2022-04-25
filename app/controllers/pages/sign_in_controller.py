@@ -72,6 +72,6 @@ def sign_in(data):
     else:
         # user have session
 
-        print("l'utilisateur se déconnecte")
-        return redirect("/sign-out")
+        print("l'utilisateur accede a son compte")
+        return redirect("/account")
 
