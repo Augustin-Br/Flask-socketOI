@@ -66,8 +66,9 @@ def sign_in(data):
 
             navbar = auth_controller.auth()
             content =  render_template('pages/sign_in_page.html')
+            foother = render_template('layout/foother.html')
 
-            return render_template("template.html", navbar = navbar, content = content, title = "Connexion")
+            return render_template("template.html", navbar = navbar, content = content, title = "Connexion", foother = foother)
 
     else:
         # user have session

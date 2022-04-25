@@ -6,16 +6,13 @@ from ... import db
 from app.controllers.auth import auth_controller
 from app.controllers.pages import pong_controller
 
-def home():
-    info = users.query.all()
-
+def account():
+    
     # navbar:
     navbar = auth_controller.auth()
 
-    pong_controller.pong()
-
-    content = render_template("pages/home_page.html", data=info)
+    content = render_template("pages/myaccount_page.html")
     
     foother = render_template("layout/foother.html")
 
-    return render_template("template.html", title="Accueil", navbar=navbar, content=content, foother = foother)
+    return render_template("template.html", title="Account", navbar=navbar, content=content, foother = foother)

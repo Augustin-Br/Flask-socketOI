@@ -37,4 +37,5 @@ def sign_up(data):
         # l'utilisateur veux accèdé a la page d'inscription
         navbar = auth_controller.auth()
         content = render_template('pages/sign_up_page.html')
-        return render_template("template.html", title="Inscription", navbar = navbar, content = content)
+        foother = render_template('layout/foother.html')
+        return render_template("template.html", title="Inscription", navbar = navbar, content = content, foother = foother)

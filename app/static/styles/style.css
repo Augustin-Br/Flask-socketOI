@@ -174,10 +174,14 @@ caption {
 
 
 /* footer */
-footer {
+.foother_container{
     color: white;
     text-align: center;
     background-color: #111;
+}
+
+.foother_github a img{
+    width: 35px;
 }
 
 
@@ -202,6 +206,17 @@ footer {
 
 
 /* page sign-up */
+
+.background_sign{
+    background-size:cover;
+    padding-top: 1%;
+    height: 100vh;
+    background-image: url('../pictures/backgr.png');
+    background-repeat: repeat;
+}
+
+
+
 #container {
     width: 400px;
     margin: 0 auto;
@@ -220,7 +235,7 @@ form {
 
 #container h1 {
     width: 38%;
-    margin: 0 auto;
+    margin: 0;
     padding-bottom: 10px;
     text-align: center;
     font-family: Squid-Game, serif;
@@ -262,4 +277,38 @@ input[type=button]:hover {
     background-color: white;
     color: #53af57;
     border: 1px solid #53af57;
+}
+
+#body{
+    background-size:cover;
+    height: 100vh;
+    background-image: url('../pictures/backgr.png');
+    background-repeat: repeat;
+}
+
+.myaccount{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 20px;
+}
+
+.du{
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+    text-align: center;
+    font-family: serif;
+    font-family: Squid-Game, serif;
+}
+
+.duu{
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 25px;
+    text-align: center;
+    font-family: serif;
 }

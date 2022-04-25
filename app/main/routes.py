@@ -1,6 +1,6 @@
 from flask import session, redirect, url_for, render_template, request
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.controllers.pages import home_controller, logout_controller, sign_up_controller, sign_in_controller, view_db_controller, rule_controller
+from app.controllers.pages import home_controller, logout_controller, sign_up_controller, sign_in_controller, view_db_controller, rule_controller, account_controller
 from . import main
 
 #Home page
@@ -42,3 +42,8 @@ def view_db():
 @main.route('/rule')
 def rule():
     return rule_controller.rule()
+
+#Account page
+@main.route('/account')
+def account():
+    return account_controller.account()
