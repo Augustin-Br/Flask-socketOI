@@ -7,7 +7,7 @@ from app.controllers.auth import auth_controller
 from app.controllers.pages import pong_controller
 
 def home():
-    info = users.query.all()
+    info = users.query.order_by(users.score.desc()).limit(8).all()
 
     # navbar:
     navbar = auth_controller.auth()
