@@ -125,30 +125,37 @@ def pong():
                 if(data['score'][0] == 8 or data['score'][1] == 8):
 
                     updateJ1 = db.session.query(users).filter_by(name=player1['username']).first()
-                    updateJ1.score += data['score'][1]
-                    updateJ1.nb_partie += 1
-                    db.session.add(updateJ1)
-                    db.session.commit()
-
                     updateJ2 = db.session.query(users).filter_by(name=player2['username']).first()
-                    updateJ2.score += data['score'][0]
-                    updateJ2.nb_partie += 1
-                    db.session.add(updateJ2)
-                    db.session.commit()
+
 
                     if(data['score'][0] == 8):
 
                         winner = player2['username']
                         loosing = player1['username']
                         score = [data['score'][0], data['score'][1]]
+                        updateJ2.win += 1
+                        updateJ1.lose += 1
  
 
                     else:
+
+
                         winner = player1['username']
                         loosing = player2['username']
                         score = [data['score'][1], data['score'][0]]
+                        updateJ1.win += 1
+                        updateJ2.lose += 1
 
 
+                    updateJ1.score += data['score'][1]
+                    updateJ1.nb_partie += 1
+                    db.session.add(updateJ1)
+                    db.session.commit()
+
+                    updateJ2.score += data['score'][0]
+                    updateJ2.nb_partie += 1
+                    db.session.add(updateJ2)
+                    db.session.commit()
                     
                     # envoie du message aux joueurs et spectateur
                     socketio.emit('PlayerWin', {'winner': winner, "loosing": loosing, 'score': score})

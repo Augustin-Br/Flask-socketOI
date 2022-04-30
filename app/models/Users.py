@@ -14,12 +14,16 @@ class users(db.Model):
     nb_partie = db.Column(db.Integer)
     score = db.Column(db.Integer)
     data_created = db.Column(db.DateTime, default=datetime.now)
+    win = db.Column(db.Integer)
+    lose = db.Column(db.Integer)
 
-    def __init__(self, name, password, nb_partie, score):
+    def __init__(self, name, password, nb_partie, score, win, lose):
         self.name = name
         self.password = password
         self.nb_partie = nb_partie
         self.score = score
+        self.win = win
+        self.lose = lose
 
 def encrypt_password(password):
     

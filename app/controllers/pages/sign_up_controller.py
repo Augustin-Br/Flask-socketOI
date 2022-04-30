@@ -17,6 +17,8 @@ def sign_up(data):
         password = encrypt_password(data['password'])
         nb_partie = 0
         score = 0
+        win = 0
+        lose = 0
 
         # check username already existe:pyt
         user_found = users.query.filter_by(name=username).first()
@@ -27,7 +29,7 @@ def sign_up(data):
             return
 
         else:
-            data = users(username, password, nb_partie, score)
+            data = users(username, password, nb_partie, score, win, lose)
             db.session.add(data)
             db.session.commit()
             print("ok nom")

@@ -14,7 +14,6 @@ def account():
     data = users.query.filter_by(name = session['username']).first()
 
 
-
     content = render_template("pages/myaccount_page.html", data=data)
     
     foother = render_template("layout/foother.html")

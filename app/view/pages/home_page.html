@@ -172,6 +172,7 @@
                         <th>Pseudo</th>
                         <th>Nombre de partie</th>
                         <th>Score Total</th>
+                        <th>Ratio</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -182,6 +183,7 @@
                         <td>{{i.name}}</td>
                         <td>{{i.nb_partie}}</td>
                         <td>{{i.score}}</td>
+                        <td>{{((i.win / (i.win+i.lose)) * 100)|int}} %</td>
                     </tr>
 
 
