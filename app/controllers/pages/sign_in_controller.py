@@ -26,18 +26,18 @@ def sign_in(data):
 
             #verify session
             
-            exists = db.session.query(users._id).filter_by(name=session['username']).scalar() is not None
+            exists = db.session.query(users._id).filter_by(name=username).scalar() is not None
             
             if exists == True:
                 print('l\'utilisateur existe')
-                name_id = users.query.filter_by(name=session['username']).first()
+                name_id = users.query.filter_by(name=username).first()
                 print(name_id.password)
                 
                 # if password == name_id.password:
                     # print('accès autorisé')
                     # return redirect('/')
                 
-                verify_password = password_verif(session.get("password"), name_id.password)
+                verify_password = password_verif(password, name_id.password)
                 print(verify_password)
                 
                 if verify_password == 'True':
