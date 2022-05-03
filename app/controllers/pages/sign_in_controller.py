@@ -23,13 +23,6 @@ def sign_in(data):
             password = data['password']
             
 
-            # stock data into user's session
-
-            session['username'] = username
-            session['password'] = password
-
-            print("username : ", session.get("username"))
-            print("password : ", session.get("password"))
 
             #verify session
             
@@ -49,7 +42,20 @@ def sign_in(data):
                 
                 if verify_password == 'True':
                     print('accès autorisé')
+                    # stock data into user's session
+
+
+
+                    session['username'] = username
+                    session['password'] = password
+
+                    print("username : ", session.get("username"))
+                    print("password : ", session.get("password"))
+
                     return redirect('/')
+
+
+
                     
                 else:
                     return redirect('/sign-up')

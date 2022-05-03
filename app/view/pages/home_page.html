@@ -177,13 +177,13 @@
                 </thead>
                 <tbody>
 
-                    {% for i in data %}
+                    {% for i in range(data|length) %}
 
                     <tr>
-                        <td>{{i.name}}</td>
-                        <td>{{i.nb_partie}}</td>
-                        <td>{{i.score}}</td>
-                        <td>{{((i.win / (i.win+i.lose)) * 100)|int}} %</td>
+                        <td>{{data[i].name}}</td>
+                        <td>{{data[i].nb_partie}}</td>
+                        <td>{{data[i].score}}</td>
+                        <td>{{win_rate[i]*100}}</td>
                     </tr>
 
 

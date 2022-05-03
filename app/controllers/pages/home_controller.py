@@ -14,7 +14,18 @@ def home():
 
     pong_controller.pong()
 
-    content = render_template("pages/home_page.html", data=info)
+    win_rate_tab = []
+    
+    for j in range (len(info)):
+        # print(info)
+        if info[j].win == 0 and info[j].lose == 0:
+            win_rate = 0
+        else:
+            win_rate = info[j].win / (info[j].win + info[j].lose)
+            
+        win_rate_tab.append(win_rate)
+
+    content = render_template("pages/home_page.html", data=info, win_rate=win_rate_tab)
     
     foother = render_template("layout/foother.html")
 

@@ -7,14 +7,23 @@ from app.controllers.auth import auth_controller
 from app.controllers.pages import pong_controller
 
 def account():
-    
+    info = users.query.order_by(users.score.desc()).limit(8).all()
+
     # navbar:
     navbar = auth_controller.auth()
 
     data = users.query.filter_by(name = session['username']).first()
 
 
-    content = render_template("pages/myaccount_page.html", data=data)
+    if(data.win + data.lose == 0):
+        win_rate = 0
+    else:
+
+        win_rate = data.win / (data.win + data.lose)
+            
+   
+
+    content = render_template("pages/myaccount_page.html", data=data, win_rate=win_rate)
     
     foother = render_template("layout/foother.html")
 

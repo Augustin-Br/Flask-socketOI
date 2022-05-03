@@ -12,7 +12,7 @@
             <p class="duu"><b>Nombre de partie :</b>{{data.nb_partie}}</p>
         </div>
         <div class="password">
-            <p class="duu"><b>Ratio de victoire :</b>{{data.win / (data.win+data.lose) * 100}} %</p>
+            <p class="duu"><b>Ratio de victoire :</b>{{win_rate * 100}} %</p>
         </div>
         <a href="/sign-out">
             <input type="button" value="Déconnexion">
