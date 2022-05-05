@@ -10,16 +10,16 @@ class users(db.Model):
     __tablename__ = 'users'
     _id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
-    password = db.Column(db.Text)
+    password_hash = db.Column(db.Text)
     nb_partie = db.Column(db.Integer)
     score = db.Column(db.Integer)
     data_created = db.Column(db.DateTime, default=datetime.now)
     win = db.Column(db.Integer)
     lose = db.Column(db.Integer)
 
-    def __init__(self, name, password, nb_partie, score, win, lose):
+    def __init__(self, name, password_hash, nb_partie, score, win, lose):
         self.name = name
-        self.password = password
+        self.password_hash = password_hash
         self.nb_partie = nb_partie
         self.score = score
         self.win = win

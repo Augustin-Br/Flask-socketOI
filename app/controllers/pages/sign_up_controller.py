@@ -14,7 +14,7 @@ def sign_up(data):
 
         # recup les données recus
         username = data['username']
-        password = encrypt_password(data['password'])
+        password_hash = encrypt_password(data['password'])
         nb_partie = 0
         score = 0
         win = 0
@@ -29,7 +29,7 @@ def sign_up(data):
             return
 
         else:
-            data = users(username, password, nb_partie, score, win, lose)
+            data = users(username, password_hash, nb_partie, score, win, lose)
             db.session.add(data)
             db.session.commit()
             print("ok nom")

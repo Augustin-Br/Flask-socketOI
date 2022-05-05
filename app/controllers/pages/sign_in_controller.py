@@ -31,13 +31,13 @@ def sign_in(data):
             if exists == True:
                 print('l\'utilisateur existe')
                 name_id = users.query.filter_by(name=username).first()
-                print(name_id.password)
+                print(name_id.password_hash)
                 
                 # if password == name_id.password:
                     # print('accès autorisé')
                     # return redirect('/')
                 
-                verify_password = password_verif(password, name_id.password)
+                verify_password = password_verif(password, name_id.password_hash)
                 print(verify_password)
                 
                 if verify_password == 'True':
